@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848185CA204713610055A800 /* SpeechRecognizingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848185C9204713610055A800 /* SpeechRecognizingController.swift */; };
 		84FFC59E20449058005D2500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFC59D20449058005D2500 /* AppDelegate.swift */; };
 		84FFC5A020449058005D2500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFC59F20449058005D2500 /* ViewController.swift */; };
 		84FFC5A320449058005D2500 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FFC5A120449058005D2500 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		848185C9204713610055A800 /* SpeechRecognizingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizingController.swift; sourceTree = "<group>"; };
 		84FFC59A20449058005D2500 /* SpeechRecogTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechRecogTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FFC59D20449058005D2500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FFC59F20449058005D2500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				84FFC5A420449058005D2500 /* Assets.xcassets */,
 				84FFC5A620449058005D2500 /* LaunchScreen.storyboard */,
 				84FFC5A920449058005D2500 /* Info.plist */,
+				848185C9204713610055A800 /* SpeechRecognizingController.swift */,
 			);
 			path = SpeechRecogTest;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848185CA204713610055A800 /* SpeechRecognizingController.swift in Sources */,
 				84FFC5A020449058005D2500 /* ViewController.swift in Sources */,
 				84FFC59E20449058005D2500 /* AppDelegate.swift in Sources */,
 			);
