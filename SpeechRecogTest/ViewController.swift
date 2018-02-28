@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct Light {
+struct Lamp {
     var id: String
     var name: String
 }
 
 extension ViewController: SpeechRecognizable {
     func didFind(command: String, forLampId id: String) {
-        detectedTextLabel.text = "Command: \(command); Light: \(id)"
+        detectedTextLabel.text = "Command: \(command); Lamp: \(id)"
     }
 }
 
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var detectedTextLabel: UILabel!
     @IBOutlet weak var colorView: UIView!
     
-    var currentLights: [Light] = [Light(id: "1", name: "first"), Light(id: "2", name: "kitchen"), Light(id: "3", name: "third")]
+    var currentLamp: [Lamp] = [Lamp(id: "1", name: "first"), Lamp(id: "2", name: "kitchen"), Lamp(id: "3", name: "third")]
     
     override func viewDidLoad() {
         super.viewDidLoad()

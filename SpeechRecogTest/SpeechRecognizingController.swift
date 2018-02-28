@@ -17,12 +17,12 @@ class SpeechRecognizingController {
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
     
-    var lightToModify: String = ""
-    var lightCommand: String = ""
+    var lampToModify: String = ""
+    var lampCommand: String = ""
     
     func recordAndRecognizeSpeech() {
-        lightToModify = ""
-        lightCommand = ""
+        lampToModify = ""
+        lampCommand = ""
         
         let recordingFormat = audionEngine.inputNode.outputFormat(forBus: 0)
         audionEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
@@ -69,59 +69,59 @@ class SpeechRecognizingController {
             let possibleNumber = String(lastWordSpoken).split(separator: "%").first!
             
             if let percentage = Int(possibleNumber), percentage >= 0 && percentage <= 100 {
-                lightCommand = String(percentage)
+                lampCommand = String(percentage)
             }
         }
         
         switch lastWordSpoken {
         case "light":
-            self.delegate.currentLights.forEach { (light) in
+            self.delegate.currentLamp.forEach { (light) in
                 if light.name.lowercased() == secondToLastWordSpoken.lowercased() {
-                    lightToModify = light.id
+                    lampToModify = light.id
                 }
             }
         case "lamp":
-            self.delegate.currentLights.forEach { (light) in
+            self.delegate.currentLamp.forEach { (light) in
                 if light.name.lowercased() == secondToLastWordSpoken.lowercased() {
-                    lightToModify = light.id
+                    lampToModify = light.id
                 }
             }
         case "lights":
-            lightToModify = "all"
+            lampToModify = "all"
         case "lamps":
-            lightToModify = "all"
+            lampToModify = "all"
         case "every":
-            lightToModify = "all"
+            lampToModify = "all"
         case "all":
-            lightToModify = "all"
+            lampToModify = "all"
         case "on":
-            lightCommand = "100"
+            lampCommand = "100"
         case "off":
-            lightCommand = "0"
+            lampCommand = "0"
         default:
             break
         }
         
         switch secondToLastWordSpoken {
         case "light":
-            self.delegate.currentLights.forEach { (light) in
+            self.delegate.currentLamp.forEach { (light) in
                 if light.name.lowercased() == lastWordSpoken.lowercased() {
-                    lightToModify = light.id
+                    lampToModify = light.id
                 }
             }
         case "lamp":
-            self.delegate.currentLights.forEach { (light) in
+            self.delegate.currentLamp.forEach { (light) in
                 if light.name.lowercased() == lastWordSpoken.lowercased() {
-                    lightToModify = light.id
+                    lampToModify = light.id
                 }
             }
         default:
             break
         }
         
-        if !lightToModify.isEmpty && !lightCommand.isEmpty {
+        if !lampToModify.isEmpty && !lampCommand.isEmpty {
             stopRecording()
-            delegate.didFind(command: lightCommand, forLampId: lightToModify)
+            delegate.didFind(command: lampCommand, forLampId: lampToModify)
         }
     }
     
@@ -134,7 +134,10 @@ class SpeechRecognizingController {
 }
 
 protocol SpeechRecognizable {
-    var currentLights: [Light] { get set }
+    var currentLamp: [Lamp] { get set }
     
     func didFind(command: String, forLampId id: String)
+    
+    //TODO: error understanding command method
+    //TODO: timeout method
 }
